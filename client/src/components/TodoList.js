@@ -12,8 +12,8 @@ export default function TodoList() {
 	}, []);
 
 	return (
-		<div className=''>
-			<h1>to do list</h1>
+		<div>
+			<h1 className='dont-bold mt-10'>to do list</h1>
 			{todos &&
 				todos.length > 0 &&
 				todos.map((todo, index) => (

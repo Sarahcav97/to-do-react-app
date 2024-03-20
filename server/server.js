@@ -16,6 +16,7 @@ app.use((req, res, next) => {
 const dbPath = path.join(__dirname, 'db/todo.json');
 //create a new todo
 app.post('/api/todo', (req, res) => {
+	console.log('todo post route');
 	try {
 		const { todo, urgency } = req.body;
 		if (!todo) {

@@ -1,7 +1,12 @@
 [
-	{
-		"todo": "something",
-		"urgency": "normal",
-		"dateAdded": "2024-03-13T17:42:50.3272"
-	}
+  {
+    "todo": "something",
+    "urgency": "normal",
+    "dateAdded": "2024-03-13T17:42:50.3272"
+  },
+  {
+    "todo": "poop",
+    "urgency": "normal",
+    "dateAdded": "2024-03-20T16:50:11.420Z"
+  }
 ]
