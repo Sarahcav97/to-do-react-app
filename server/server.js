@@ -23,6 +23,7 @@ app.post('/api/todo', (req, res) => {
 			return res.status(400).json({ message: 'invalid request' });
 		}
 		const newItem = {
+			id: Math.floor(Math.random() * 10000000),
 			todo,
 			urgency: urgency || 'normal',
 			dateAdded: new Date().toISOString(),
@@ -43,6 +44,7 @@ app.get('/api/todo', (req, res) => {
 		res.status(500).json({ message: e.message });
 	}
 });
+app.delete('./api/todo/:id', (req, res) => {});
 app.listen(3001, () => {
 	console.log(`server is working on https://localhost:${PORT}`);
 });

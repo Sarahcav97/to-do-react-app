@@ -1,6 +1,6 @@
 import React from 'react';
 import client from '../api/client';
-export default function TodoForm() {
+export default function TodoForm({ todos, setTodos }) {
 	const [formData, setFormData] = React.useState({
 		todo: '',
 		urgency: 'normal',
@@ -11,10 +11,11 @@ export default function TodoForm() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const { data } = await client.post('/todo', formData);
+		setTodos([...todos, formData]);
 	};
 	return (
 		<div>
-			<h1 className='font-bold mt-10'>TodoForm</h1>
+			<h1 className='font-bold mt-10'>Todo Form</h1>
 			<form onSubmit={handleSubmit}>
 				<input
 					placeholder='Todo'

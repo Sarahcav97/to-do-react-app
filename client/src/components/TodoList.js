@@ -1,8 +1,8 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import client from '../api/client';
-export default function TodoList() {
-	const [todos, setTodos] = useState([]);
+import Itemm from './Itemm';
+export default function TodoList({ todos, setTodos }) {
 	async function getData() {
 		const { data } = await client.get('/todo');
 		setTodos(data.todos);
@@ -13,14 +13,15 @@ export default function TodoList() {
 
 	return (
 		<div>
-			<h1 className='dont-bold mt-10'>to do list</h1>
-			{todos &&
-				todos.length > 0 &&
-				todos.map((todo, index) => (
-					<div key={index}>
-						<p>{todo.todo}</p>
-					</div>
-				))}
+			<div className='mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4'>
+				{todos &&
+					todos.length > 0 &&
+					todos.map((todo, index) => (
+						<div key={index}>
+							<Itemm item={todo} />
+						</div>
+					))}
+			</div>
 		</div>
 	);
 }
