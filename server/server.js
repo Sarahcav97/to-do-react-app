@@ -3,6 +3,7 @@ const path = require('path');
 const appendFile = require('./utils/helper');
 const fs = require('fs');
 const cors = require('cors');
+const deleteItem = require('./utils/deleteItem');
 const app = express();
 const PORT = 3001;
 app.use(express.json()); //allows requests to come through
@@ -44,7 +45,16 @@ app.get('/api/todo', (req, res) => {
 		res.status(500).json({ message: e.message });
 	}
 });
-app.delete('./api/todo/:id', (req, res) => {});
+app.delete('./api/todo/:id', (req, res) => {
+	try {
+		const { id } = req.params;
+		const updatedData = deleteItem(dbPath, id);
+		res.status(200),
+			json({ message: 'Todo has been deleted', todos: updatedData });
+	} catch (error) {
+		res.status(500).json({ message: error.message });
+	}
+});
 app.listen(3001, () => {
 	console.log(`server is working on https://localhost:${PORT}`);
 });
